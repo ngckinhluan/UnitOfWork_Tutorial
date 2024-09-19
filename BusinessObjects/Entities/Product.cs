@@ -2,7 +2,7 @@
 
 public class Product
 {
-    public required string ProductId { get; set; }
+    public required int ProductId { get; set; }
     public string? ProductName { get; set; }
     public int? Quantity { get; set; }
 }

@@ -41,6 +41,19 @@ namespace API.Controllers
             return CreatedAtAction(nameof(GetByIdAsync), new { id = entity.OrderId }, entity);
         }
         
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Order entity)
+        {
+            var existingEntity = await _orderService.GetByIdAsync(id);
+            if (existingEntity == null)
+            {
+                return NotFound();
+            }
+            entity.OrderId = id; 
+            await _orderService.UpdateAsync(entity);
+            return NoContent();
+        }
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
@@ -49,7 +62,6 @@ namespace API.Controllers
             {
                 return NotFound();
             }
-
             await _orderService.DeleteAsync(id);
             return NoContent();
         }
