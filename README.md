@@ -1,0 +1,1 @@
+[![UnitOfWork_Tutorial (CI / CD applied).](https://github.com/ngckinhluan/UnitOfWork_Tutorial/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/ngckinhluan/UnitOfWork_Tutorial/actions/workflows/dotnet.yml)
