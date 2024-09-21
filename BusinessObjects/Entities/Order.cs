@@ -1,9 +1,21 @@
-﻿namespace BusinessObjects.Entities;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-public class Order
+namespace BusinessObjects.Entities
 {
-    public required int OrderId { get; set; }
-    public string? OrderName { get; set; }
-    public int? Quantity { get; set; }
-    
+    public class Order
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; } = null!; // MongoDB identifier
+
+        [BsonElement("OrderId")]
+        public required int OrderId { get; set; }
+
+        [BsonElement("OrderName")]
+        public string? OrderName { get; set; }
+
+        [BsonElement("Quantity")]
+        public int? Quantity { get; set; }
+    }
 }

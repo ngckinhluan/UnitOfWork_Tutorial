@@ -1,8 +1,24 @@
-﻿namespace BusinessObjects.Entities;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-public class Product
+namespace BusinessObjects.Entities
 {
-    public required int ProductId { get; set; }
-    public string? ProductName { get; set; }
-    public int? Quantity { get; set; }
+    public class Product
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; } = null!; // MongoDB identifier
+
+        [BsonElement("ProductId")]
+        public required int ProductId { get; set; }
+
+        [BsonElement("ProductName")]
+        public string? ProductName { get; set; }
+
+        [BsonElement("Price")]
+        public decimal? Price { get; set; }
+
+        [BsonElement("Stock")]
+        public int? Stock { get; set; }
+    }
 }
